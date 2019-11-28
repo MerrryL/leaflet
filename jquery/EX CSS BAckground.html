@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    
+
+    <title>Exercice de background CSS/Jquery</title>
+    <style>
+      body, html{
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      .fun {
+        font-family: basic-sans, sans-serif;
+        color: white;
+        border: 0;
+        cursor: pointer;
+        padding: 0.5em 1.25em;
+        background: linear-gradient(90deg, #ee6352, purple, #ee6352);
+        background-size: 300%;
+        background-position: left;
+        transition: background-position 350ms;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-style: italic;
+        font-size: 1.2rem;
+      }
+
+      .fun:hover {
+        background-position: right;
+      }
+
+      .title {
+        margin: 0 0 .5em;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-style: italic;
+        font-size: 3rem;
+        color: #ee6352;
+        line-height: .8;
+        margin: 0;
+      
+        background-image: var(--gradient);
+        background-clip: text;
+       
+      
+        background-size: 300%;
+        transition: background-position 1s;
+      }
+
+      .title::hover {
+        background-position: right;
+      }
+
+      .clickable {
+        border:solid 6px;
+        display:block;
+        margin:25px;
+        width:100px;
+        height:100px;
+        position:relative;
+
+        margin-top : 100px;
+      }
+
+      .clickable::before{
+        content:'close';
+        position:absolute;
+        top:-30px;
+        right:0;
+        background:red;
+
+      }
+    </style>
+    </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="topnavbar" class="navbar col sticky-top align-self-center fun" style="border:solid 1px;margin:0px;width:300px; height:100px; color:white; text-align: center;">          
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Couleurs disponibles :</a>
+        <div id="colordropdown" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">          
+        </div>
+        <a id="colorindicator">Arrière plan par défaut (vide)</a>
+        </nav>        
+      </div>
+
+      <h2 class="title">JQuery et CSS font muse muse :</h2>
+      <div class="row" id="listOfDivs">       
+
+        <div value="noir désir" class="clickable" style="background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));">
+          <p class="deletable">X</p> 
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+
+
+      $(document).ready(function(){
+
+        let bckgrounds = [ //d'abord on crée un array d'array, chaque objet a un nom et un truc qui va dans background-image
+        {
+          name : "First",
+          bg: 'url(https://source.unsplash.com/random/800x600)',
+        },
+        {
+          name : "Second",
+          bg: 'url(https://source.unsplash.com/random/300x200)',
+        },
+        {
+          name : "Third",
+          bg: 'url(https://source.unsplash.com/random/600x400)',
+        },
+        {
+          name : "Fourth",
+          bg: 'url(https://source.unsplash.com/random/250x200)',
+        },
+        {
+          name : "Fifth",
+          bg: 'url(https://source.unsplash.com/random/300x250)',
+        },
+        {
+          name : "Sixth",
+          bg: 'url(https://source.unsplash.com/random/600x500)',
+        },
+        {
+          name : "Seventh",
+          bg: 'linear-gradient(to top, #1e9600, #fff200, #ff0000)',
+        },
+        {
+          name : "Eighth",
+          bg: 'linear-gradient(to left, #c9ffbf, #ffafbd)',
+        },
+        {
+          name : "Nineth",
+          bg: 'linear-gradient(to bottom, #fbd3e9, #bb377d)',
+        },
+        {
+          name : "Tenth",
+          bg: 'linear-gradient(to bottom, #add100, #7b920a)',
+        },
+        ]
+
+        //on prend chacun des objets dans l'array et on l'append à listOfDivs
+        $.each(bckgrounds, function (index, bckgrounds){
+          let whatToAdd = "";
+          //alert(bckgrounds.bg);
+
+
+
+          whatToAdd +="<div value=\"" + bckgrounds.name + "\" class=\"clickable\" style=\"background-image:" + bckgrounds.bg + ";\"><p class=\"deletable\">X</p></div>";
+
+          $("#listOfDivs").append(whatToAdd);
+
+        });
+
+        //C'était le kiff de Mr Richard, une navbar qui change de taille quand on la survole
+        $("#topnavbar").hover(function(){
+          $(this).css("height","150");
+        })
+        $("#topnavbar").mouseleave(function(){
+          $(this).css("height","100",);
+        })
+
+        //on rajoute un "onclick" à listOfDivs qui s'applique à tous ceux qui sont .clickable
+        $("#listOfDivs").on("click" , ".clickable", function(){
+          //alert("La couleur est : " +$( this ).css( "background-color" ));
+          $("body").css("background-image",$( this ).css( "background-image" ));
+          $("#colorindicator").html($( this ).attr("value"));
+        });
+
+        //on rajoute un "onclick" à listOfDivs qui s'applique à ceux qui sont deletable
+        $("#listOfDivs").on("click" , ".deletable", function(){
+          let whatToAdd = '';
+          let bgcolo= ''+ $(this).parent().css( "background-image" );
+          let valuecolo= '' + $(this).parent().attr("value");
+          //alert(bgcolo);
+          //alert(valuecolo);
+          whatToAdd+= "<a class=\"dropdown-item\" style=\"background-image:"+bgcolo+";\" value=\"" + bgcolo + "\" href=\"#\">" + valuecolo+ "</a>";
+
+
+          $("#colordropdown").append(whatToAdd);
+          alert(whatToAdd);
+          $(this).parent().remove();
+        });
+
+        //on rajoute un "onclick" à la navbar pour chaque .dropdown-item
+        $("#topnavbar").on("click",".dropdown-item", function(){
+          let whatToAdd = "";
+          let valuecolo= ''+ $(this).attr("value");
+          let bgcolo= '' + $(this).html();
+
+          //alert(bgcolo);
+          //alert(valuecolo);
+
+          whatToAdd +="<div value=\"" + bgcolo + "\" class=\"clickable\" style=\"background-image:" + valuecolo + ";\"><p class=\"deletable\">X</p></div>";
+          $("#listOfDivs").append(whatToAdd);
+          $(this).remove();
+        });
+      });
+    </script>
+  </body>
+</html>

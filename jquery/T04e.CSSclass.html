@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Les boutons avec Bootstrap</title>
+    <style>
+      .info{
+        font-weight:bold;
+        font-size: xx-large;
+      }
+      .rouge{
+        color:red;
+      }
+      </style>
+    </head>
+  <body>
+
+
+
+    <div class="container-fluid">
+
+      <h2>JQuery CSS class</h2>
+      
+      <p>Paragraphe</p>
+      <div>
+        <p>Un autre <span>paragraphe </span> dans un div </p>
+      </div>
+
+      <div id="div">
+        <h2 id="test">Je suis un div</h2>
+      </div>
+      <hr>
+
+      <button type="button" class="btn btn-success" id="btn">Ajouter classe</button>
+      <button type="button" class="btn btn-success" id="btn1">Ajouter multi classes</button>
+      <button type="button" class="btn btn-success" id="btn2">Retirer classes</button>
+      <button type="button" class="btn btn-success" id="btn3">Toggle classes</button>
+      
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+
+        $("#btn").click(function(){
+          $("h2").addClass("info");
+          $("#div").addClass("rouge");
+          
+        });
+        $("#btn1").click(function(){
+          $("#test").addClass("info rouge");
+          
+        });
+        $("#btn2").click(function(){
+          $("#test").removeClass("info rouge");
+        });
+
+        $("#btn3").click( () => {
+          $(this).toggleClass("btn-lg");
+        })
+        
+        
+
+        
+      });
+    </script>
+
+
+
+
+  </body>
+</html>

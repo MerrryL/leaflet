@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Leafleet</title>
+    <style type="text/css">
+    #mapid
+    {
+      height: 90vh;
+      width : 95vw;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>Fun with Leaflet</h1>
+      <button type="button" onclick="localization()" class="btn btn-info">Localisation</button>
+      <div id="mapid">
+
+
+      </div>
+          
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="leaflet/leaflet.js"></script>
+    <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>
+
+    <script>
+      var icon = L.icon({
+        iconUrl: 'leaflet/images/marker-comics.png',
+        iconSize : [32,37],
+        iconAnchor : [16,19],
+        popupAnchor : [110,45],
+
+      });
+      var map = L.map('mapid').setView([50.5088043,3.5836279],15);
+
+      var layer = L.tileLayer('https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          
+          maxZoom: 22
+        });
+
+      /*var layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy openStreetMap',
+        maxZoom:18,
+      });*/
+
+      map.addLayer(layer);
+
+      var marker = L.marker([50.509316, 3.591047], {icon:icon}).addTo(map)
+      .bindPopup("<b>Chez le plus mieux</b>");
+
+      var geojsonLayer = new L.GeoJSON.AJAX('gares-sncb');       
+      geojsonLayer.addTo(map);
+
+      /*$.getJSON('src/gares-sncb.geojson', function (data) {
+      // Define the geojson layer and add it to the map
+      L.geoJson(data).addTo(map);
+      });*/
+
+
+      function localization(){
+        navigator.geolocation.getCurrentPosition(function(location){
+          var latlng = new L.LatLng(location.coords.latitude,location.coords.longitude);
+          var marker = L.marker(latlng).addTo(map);
+          map.setView(latlng);
+        });
+      }
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+  </body>
+</html>

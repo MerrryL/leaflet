@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Les boutons avec Bootstrap</title>
+    <style>
+      #carre1{
+        position:relative;
+        background: #aa3399;
+        height: 100px;
+        width: 100px;
+      }
+
+      #carre2{
+        position:relative;
+        background: #FF3399;
+        height: 100px;
+        width: 100px;
+      }
+
+      #carre3, #carre4, #carre5{
+        position:relative;
+        background: #33FF99;
+        height: 100px;
+        width: 100px;
+      }
+      </style>
+    </head>
+  <body>
+
+    <div class="container">
+      <h2>Jquery effects : animation</h2>
+
+      <button type="button" id="button1"class="btn btn-primary">Déplacer le carré</button>
+
+      <button type="button" id="button2" class="btn btn-success">Deplacer le rond</button>
+      <button type="button" id="button3" class="btn btn-warning">truc carré</button>
+      <button type="button" id="button4" class="btn btn-warning"> truc 2</button>
+      <button type="button" id="button5" class="btn btn-danger">dsqdq</button>
+      <button type="button" id="btnanimate" class="btn btn-primary">+ ou -</button>
+
+
+      <div id="carre1"></div>
+      <p></p>
+      <div id="carre2" class="rounded-circle"></div>
+      <p></p>
+      <div id="carre3" class="rounded"> </div>
+      <p></p>
+      <div id="carre4" class="rounded"></div>
+      <p></p>
+      <div id="carre5" class="rounded"></div>
+      <p></p>
+    </div>
+      
+  </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+
+        $("#button1").click(function(){
+          $("#carre1").animate({left:'250px'});
+          $("#carre1").animate({right:'250px'});
+        });
+        $("#button2").click(function(){
+          $("#carre2").animate({
+            left:'250px',
+            opacity:'0.5',
+            height:'150px',
+            width:'150px',
+          });
+          $("#carre2").animate({
+            left:'0px',
+            opacity:'1',
+            height:'100px',
+            width:'100px',
+          });
+        });
+
+        $("#button3").click(function(){
+          var carre = $("#carre3");
+          carre.animate({height:'200px', opacity:'0.4'}, "slow")
+          carre.animate({width:'200px', opacity:'0.4'}, "slow")
+          carre.animate({height:'100px', opacity:'0.4'}, "slow")
+          carre.animate({width:'100px', opacity:'0.4'}, "slow")
+        });
+
+        $("#btnanimate").click(function(){
+          var bouton =$(this);
+          bouton.animate({left:'100px'}, "slow")
+          bouton.animate({fontSize:'3em'}, "slow")
+        });
+
+        $("#button4").click(function(){
+          $("#carre4").animate({height: 'toggle'},"slow");
+          $("#carre4").animate({height: 'toggle'},"slow");
+        });
+        $("#button5").click(function(){
+          $("#carre5").animate({left: '+=250000px'},"slow");
+          $("#carre5").animate({left: '-=250000px'},"slow");
+        });
+      
+        
+
+        
+
+
+      });
+    </script>
+
+
+
+
+  </body>
+</html>

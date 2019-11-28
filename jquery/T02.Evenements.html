@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Les boutons avec Bootstrap</title>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <h1>JQuery</h1>
+      <p>Paragraphe</p>
+      <div>
+        <p>Un autre <span class="info">paragraphe</span> dans un div</p>
+      </div>
+      <div id="jesuisdiv">
+        <h2>Zone 51</h2>
+      </div>
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input id="prenom" name="prenom">
+        </div>
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input id="nom" name="nom">
+          <br>NB caractères: <span id="nbcar">0</span>
+        </div>
+      </form>
+
+      <hr>
+
+
+
+
+      
+      <hr>
+      <button type="button" class="btn btn-danger" id="button1">Clic</button>
+      <button type="button" class="btn btn-success" id="button2">Double clic</button>
+      <button type="button" class="btn btn-primary" id="button3">UP</button>
+      <button type="button" class="btn btn-default" id="button4">DOWN</button>
+
+      <p class="multi">Essai évènements </p>
+      
+          
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $("#button1").click(function(){
+          $("p").hide();
+        });
+        $("#button2").dblclick(function(){
+          $(this).hide();
+        });
+        $("#jesuisdiv").mouseenter(function(){
+          //alert("Vous entrez dans la zone 51.");
+        });
+        $("#jesuisdiv").mouseleave(function(){
+          //alert("Vous quittez la zone 51.");
+        });
+        $("#button4").mousedown(function(){
+          alert("Clic enfoncé sur le bouton");
+        });
+        $("#button4").mouseup(function(){
+          alert("Clic relaché sur le bouton");
+        });
+        $("div:last").hover(function(){
+          //alert("Passe sur DIV");
+          //},
+          //function(){
+            //alert("Au revoir");
+        });
+
+        $("input").focus(function(){
+          $(this).css("background-color","grey");
+        })
+
+        $("input").blur(function(){
+          $(this).css("background-color","white");
+        })
+
+        i=0;
+        $("#nom").keypress(function(){
+          $("#nbcar").text(i+=1);
+        });
+
+        $(".multi").on({
+          mouseenter:function(){
+            $(this).css("background-color","red");
+          },
+          mouseleave:function(){
+            $(this).css("background-color","green");
+          },
+          dblclick:function(){
+            $(this).css("background-color","blue");
+          },
+
+        });
+
+
+
+
+
+
+      });
+    </script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Les boutons avec Bootstrap</title>
+    <style>
+      .bordure *{
+        display:block;
+        border: 2px solid lightgrey;
+        color: lightgrey;
+        padding:5px;
+        margin:15px;
+      }
+      </style>
+    </head>
+  <body>
+
+
+
+    <div class="container-fluid">
+
+      <h2>Jquery Parent-Children</h2>
+      <span id="info"></span>
+      <p>Lucky Luke</p>
+      <p>LARGO WINCH</p>
+      <p>Treize</p>
+      <p>Boule et Bill</p>
+      <div class="bordure">
+        <div style="width:500px;">div(arrière grand parent)
+          <ul> ul(grand parent)
+            <li>li (parent)
+              <span>span</span>
+            </li>
+          </ul>
+        </div>
+        <div style="width:500px">div(arrière grand parent)
+          <p>p(parent)
+            <span id="parents">span</span>
+          </p>
+        </div>
+
+      </div>
+
+
+
+
+
+      <button type="button" class="btn btn-success" id="btn1">Parent</button>
+      <button type="button" class="btn btn-success" id="btn2">Parents</button>
+      <button type="button" class="btn btn-success" id="btn3">Parents(ul)</button>
+      <button type="button" class="btn btn-success" id="btn4">Parents until div</button>
+      <button type="button" class="btn btn-success" id="btn5">Enfants de div bordure</button>
+      <button type="button" class="btn btn-success" id="btn6">Enfants de div qui sont p</button>
+      <button type="button" class="btn btn-success" id="btn7">Find span</button>
+      <button type="button" class="btn btn-success" id="btn8">"eq"</button>
+
+      
+      
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+
+        $("#btn1").click(function(){
+          $("span").parent().css({"color":"red", "border":"2px solid red"})
+        	
+        });
+        $("#btn2").click(function(){
+          $("span").parents().css({"color":"blue", "border":"2px solid blue"})
+          
+        });
+        $("#btn3").click(function(){
+          $("span").parents("ul").css({"color":"purple", "border":"2px solid purple"})
+        });
+        $("#btn4").click(function(){
+          $("span").parentsUntil("div").css({"color":"brown", "border":"2px solid brown"})
+        });
+        $("#btn5").click(function(){
+          $("div .bordure").children("div").css({"color":"BurlyWood", "border":"2px solid BurlyWood"})
+        });
+        $("#btn6").click(function(){
+          $("div").children("p").css({"color":"Coral", "border":"2px solid Coral"})
+        });
+        $("#btn7").click(function(){
+          $("div").find("span").css({"color":"DarkCyan", "border":"2px solid DarkCyan"})
+        });
+
+        $("p").hover(function(){
+          var info= $("p").index(this);
+          $("#info").html("L'élément est à l'index >> "+info);
+        })
+        $("#btn8").click(function(){
+          $("p").eq(1).css({"color":"Cyan", "border":"2px solid Cyan"})
+        });
+
+        /*aussi
+
+        .next() .nextAll() .nextUntil("p") .prev() .prevAll() .prevUntil
+        .sibling() //tous frères et soeurs
+
+        $("div button:eq(3)")
+
+        */
+       
+        
+        
+
+        
+      });
+    </script>
+
+
+
+
+  </body>
+</html>

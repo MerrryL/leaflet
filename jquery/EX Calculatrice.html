@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Exo Calculette</title>
+    <style>
+      body{
+        font-size:2rem;
+      }
+
+
+    .calculette {
+      margin : auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+      width : 500px;
+      height: 600px;
+      box-shadow: 0 0 0 10px blue,
+                  0 0 0 20px lightblue,
+                  0 0 0 30px blue;
+    }
+    .compteur, .resultat{
+      background:lightblue;
+      text-align:right;
+      border:solid 2px blue;
+      padding-top:32px;
+      padding-right:20px;
+      
+    }
+    .numero{
+      background:lightgrey;
+      text-align:center;
+      border:solid 2px grey;
+      padding-top:32px;
+    }
+    .operateur{
+      background:yellow;
+      text-align:center;
+      border:solid 2px orange;
+      padding-top:32px;
+    }
+    .submit{
+      background:indigo;
+      color:white;
+      text-align:center;
+      border:solid 2px orange;
+      padding-top:32px;  
+    }
+
+    .div11 { grid-area: 1 / 1 / 2 / 6; }
+    .div10 { grid-area: 2 / 1 / 3 / 6; }
+    .div7 { grid-area: 3 / 1 / 4 / 2; }
+    .div8 { grid-area: 3 / 2 / 4 / 3; }
+    .div9 { grid-area: 3 / 3 / 4 / 4; }
+    .div4 { grid-area: 4 / 1 / 5 / 2; }
+    .div5 { grid-area: 4 / 2 / 5 / 3; }
+    .div6 { grid-area: 4 / 3 / 5 / 4; }
+    .div1 { grid-area: 5 / 1 / 6 / 2; }
+    .div2 { grid-area: 5 / 2 / 6 / 3; }
+    .div3 { grid-area: 5 / 3 / 6 / 4; }
+    .div12 { grid-area: 3 / 4 / 4 / 5; }
+    .div13 { grid-area: 4 / 4 / 5 / 5; }
+    .div14 { grid-area: 5 / 4 / 6 / 6; }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>Exo Calculette</h1>
+      <hr>
+      <div class="calculette">
+        <div class="div11 compteur"></div>
+        <div class="div10 resultat"></div>
+        <div class="div7 numero">7</div>
+        <div class="div8 numero">8</div>
+        <div class="div9 numero">9</div>
+        <div class="div4 numero">4</div>
+        <div class="div5 numero">5</div>
+        <div class="div6 numero">6</div>
+        <div class="div1 numero">1</div>
+        <div class="div2 numero">2</div>
+        <div class="div3 numero">3</div>
+        <div class="div12 operateur">+</div>
+        <div class="div13 operateur">-</div>
+        <div class="div14 submit">=</div>
+        <div class="div15 operateur">*</div>
+        <div class="div16 operateur">/</div>
+      </div>    
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+
+
+        $(".numero, .operateur").click(function(){
+
+          //alert($(this).text());
+
+          $(".compteur").append($(this).text());
+        });
+
+        $(".submit").click( () => {
+          let toEval = eval($(".compteur").text());
+          $(".resultat").text(toEval);
+          /*$(".compteur").attr("placeholder", toEval);
+          $(".compteur").text('');*/
+
+
+
+
+        });
+
+
+
+        $("#button2").dblclick(function(){
+          $(this).hide();
+        });
+        $("#jesuisdiv").mouseenter(function(){
+          //alert("Vous entrez dans la zone 51.");
+        });
+        $("#jesuisdiv").mouseleave(function(){
+          //alert("Vous quittez la zone 51.");
+        });
+        $("#button4").mousedown(function(){
+          alert("Clic enfoncé sur le bouton");
+        });
+        $("#button4").mouseup(function(){
+          alert("Clic relaché sur le bouton");
+        });
+        $("div:last").hover(function(){
+          //alert("Passe sur DIV");
+          //},
+          //function(){
+            //alert("Au revoir");
+        });
+
+        $("input").focus(function(){
+          $(this).css("background-color","grey");
+        })
+
+        $("input").blur(function(){
+          $(this).css("background-color","white");
+        })
+
+        i=0;
+        $("#nom").keypress(function(){
+          $("#nbcar").text(i+=1);
+        });
+
+        $(".multi").on({
+          mouseenter:function(){
+            $(this).css("background-color","red");
+          },
+          mouseleave:function(){
+            $(this).css("background-color","green");
+          },
+          dblclick:function(){
+            $(this).css("background-color","blue");
+          },
+
+        });
+
+
+
+
+
+
+      });
+    </script>
+
+
+
+
+  </body>
+</html>

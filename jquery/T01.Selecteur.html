@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Les boutons avec Bootstrap</title>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <h1>JQuery</h1>
+      <nav class="navbar navbar-expand-md navbar-dark bg-light justify-content-center bg-dark text-nowrap sticky-top">
+        <a class="navbar-brand" href="#">
+          <img src="img/paris.jpg" height="50" width="50"/>Bootstrap
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#monmenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="#monmenu" class="collapse navbar navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Lien 1</a>
+            </li>
+            <li class="nav-item bg-dark">
+              <a class="nav-link" href="#">Lien 2</a>
+            </li>
+            <li class="nav-item bg-warning">
+              <a class="nav-link" href="#">Lien 3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link bg-danger" href="#">Lien 4</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link bg-success dropdown-toggle" role="button" id="#sousmenu" data-toggle="dropdown" href="#">Menu Déroulant</a>
+              <div class="dropdown-menu" aria-labelledby="sousmenu">
+                <a class="dropdown-item" href="#">1
+                </a>
+                <hr class="dropdown-divider">
+                <a class="dropdown-item" href="#">2
+                </a>
+                <a class="dropdown-item" href="#">3
+                </a>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+        
+
+        <form class="form-inline" action="#">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">#</span>
+            </div>
+            <input type="text" class="form-control mr-sm-2" placeholder="recherche">
+          </div>
+          <button class="button btn-success">Search</button>
+
+        </form>
+
+        <span class="navbar-text">And one bottle of rhum!</span>
+
+      </nav>
+
+      <div class="container">
+        <h2>Jquery Selecteurs</h2>
+      </div>
+      <div class="container">
+        <p>Paragraphe</p>
+        <p>Un autre <span class="info">paragraphe</span> dans un div</p>
+      </div>
+
+
+      <div id="jesuisdiv">
+        <h2>Je suis un div</h2>
+        <a href="http://www.google.be" target="_blank" title="Moteur de recherche">Moteur de recherche</a>
+      </div>
+
+      <table class="table">
+        <tr>
+          <td>Test 1</td>
+          <td>Test</td>
+        </tr>
+        <tr>
+          <td>Test 2</td>
+          <td>Test</td>
+        </tr>
+        <tr>
+          <td>Test 3</td>
+          <td>Test</td>
+        </tr>
+        <tr>
+          <td>Test 4</td>
+          <td>Test</td>
+        </tr>
+      </table>
+
+      <hr>
+      <button type="button" class="btn-danger" id="button1">Cacher toutes les balises &lt; P&gt;</button>
+      <button type="button" class="btn-danger" id="button2">Cacher "Je suis un div"</button>
+      <button type="button" class="btn-danger" id="button3">Cacher info</button>
+      <button type="button" class="btn-danger" id="button4">Cacher Soi-même</button>
+      <button type="button" class="btn-danger" id="button5">Cacher tout</button>
+      <button type="button" class="btn-danger" id="button6">Cacher les href</button>
+      <button type="button" class="btn-danger" id="button7">Cacher les target blank</button>
+      <button type="button" class="btn-danger" id="button8">Cacher le premier div</button>
+      <button type="button" class="btn-danger" id="button9">Cacher les firsts </button>
+      <button type="button" class="btn-danger" id="button10">Cacher first child;</button>
+      <button type="button" class="btn-danger" id="button11">Cacher button</button>
+      <button type="button" class="btn-danger" id="button12">Cacher even</button>
+      <button type="button" class="btn-danger" id="button13">Cacher first child;</button>
+          
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $("#button1").click(function(){
+          $("p").hide();
+        });
+        $("#button2").click(function(){
+          $("#jesuisdiv").hide();
+        });
+        $("#button3").click(function(){
+          $(".info").hide();
+        });
+        $("#button4").click(function(){
+          $(this).hide();
+        });
+        $("#button5").click(function(){
+          $("*").hide();
+        });
+        $("#button6").click(function(){
+          $("[href]").hide();
+        });
+        $("#button7").click(function(){
+          $("a[target='_blank']").hide();
+        });
+        $("#button8").click(function(){
+          $("div:first").hide();
+        });
+        $("#button9").click(function(){
+          $("ul li:first").hide();
+        });
+        $("#button10").click(function(){
+          $("ul li:first-child").hide();
+        });
+        $("#button11").click(function(){
+          $(":button").hide();
+        });
+        $("#button12").click(function(){
+          $("tr:odd").hide();
+        });
+
+
+
+
+      });
+    </script>
+
+
+
+
+  </body>
+</html>

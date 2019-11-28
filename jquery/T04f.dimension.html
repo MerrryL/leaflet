@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Les boutons avec Bootstrap</title>
+    <style>
+      .info{
+        font-weight:bold;
+        font-size: xx-large;
+      }
+      .rouge{
+        color:red;
+      }
+      </style>
+    </head>
+  <body>
+
+
+
+    <div class="container-fluid">
+
+      <h2>jQuery HTML Dimension</h2>
+      <div id="div" class="rounded" style="width:200px; height:200px; background-color:#aa3399;">
+      	<h2>Je suis un div</h2>
+
+
+      </div>
+
+      <button type="button" class="btn btn-success" id="btn">Dimension</button>
+      
+      
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+
+        $("#btn").click(function(){
+        	var dimension ="";
+        	dimension+="Largeur"+$("#div").width()+"<br>";
+        	dimension+="Hauteur"+$("#div").height()+"<br>";
+        	$("#div").html(dimension);
+        	//innerWidth() innerHeight() outerWidth() outerHeight()
+        	alert($(document).width());
+        	alert($(window).width());
+        });
+       
+        
+        
+
+        
+      });
+    </script>
+
+
+
+
+  </body>
+</html>

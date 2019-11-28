@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Bootstrap Grille">
+    <meta name="author" content="Delcampe Amory">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Les boutons avec Bootstrap</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+
+      <h2>Jquery hide effet fondu</h2>
+      <div id="div1" style="width: 80px; height:80px;display:none;background-color:chocolate;"></div><br>
+      <div id="div2" style="width: 80px; height:80px;display:none;background-color:grey;"></div><br>
+      <div id="div3" style="width: 80px; height:80px;display:none;background-color:brown;"></div><br>
+
+      
+
+
+      <hr>
+      <button type="button" class="btn btn-danger" id="chocolate">Chocolat</button>
+      <button type="button" class="btn btn-danger" id="grey">Grey</button>
+      <button type="button" class="btn btn-danger" id="brown">Brown</button>
+      <button type="button" class="btn btn-danger" id="boutonM">Fade 3</button>
+      <button type="button" class="btn btn-danger" id="boutonT">Cacher/montrer en Fade</button>
+
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $("#chocolate").click(function(){
+          $("#div1").fadeIn();
+        });
+      
+        $("#grey").click(function(){
+          $("#div2").fadeIn("slow");
+        });
+
+        $("#brown").click(function(){
+          $("#div3").fadeIn(3000);
+        });
+        
+        $("#boutonM").click(function(){
+          $("#div1").fadeOut();
+          $("#div2").fadeOut("fast");
+          $("#div3").fadeOut(4000);
+        });
+        $("#boutonT").click(function(){
+          $("#div1 , #div2 , #div3").fadeToggle();
+
+        });
+
+
+      });
+    </script>
+
+
+
+
+  </body>
+</html>
